@@ -1,0 +1,88 @@
+<div class="container-fluid">
+<div class="row p-2 bg-info">
+    <div class="col-6">
+        <h4 class=" text-center"> Library Management System</h4>
+    </div>
+    <div class="col-6 text-end">
+        <button class="btn btn-primary" (click)="openModal()">Add Book</button>
+    </div>
+</div>
+<div class="col-md-12" >
+    <input type="text" placeholder="Search by Title" class="form-control" style="width: 400px; border-radius: 10px; border: 1px solid rgb(5, 28, 119);"(keyup)="applyFilter($event)" > 
+   </div>
+<table class="table table-bordered table-striped">
+
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>ISBN</th>
+            <th>Publication Year</th>
+            <th class="text-center">Action</th>
+        </tr> 
+    </thead>
+    <tbody>
+        @for(book of bookList ; track $index){
+            <tr>
+                <td>{{book.title}}</td>
+                <td>{{book.author}}</td>
+                <td>{{book.isbn}}</td>
+                <td>{{book.publicationYear}}</td>
+                <td class="text-center">
+                  <button class="btn btn-primary" (click)="onEdit(book)">Edit</button>  
+                  <button class="btn btn-danger" (click)="onDelete(book.id)">Delete</button>
+                </td>
+    
+            </tr>
+        }
+    
+    </tbody>
+</table>
+</div>
+
+<!-- The Modal -->
+<div class="modal" id="bookModal" #bookModal>
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+            
+          <h4 class="modal-title">{{bookForm.value.id !=0 ? 'Update Book':'Add Book'}} </h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="closeModal()"></button>
+        </div>
+  <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="row">
+                  <div class="col-12">
+                      <input type="text" name="title" formControlName="title" class="form-control" placeholder="Title"/>
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-6">
+                      <input type="text" name="author" formControlName="author" class="form-control" placeholder="Author"/>
+                  </div>
+                  <div class="col-6">
+                      <input type="text" name="isbn" formControlName="isbn" class="form-control" placeholder="ISBN"/>
+                  </div>
+                  <div class="col-6">
+                      <input type="text" name="publicationYear" formControlName="publicationYear" class="form-control" placeholder="PublicationYear"/>
+                  </div>
+                </div>
+      
+              </div>
+
+               <!-- Modal footer -->
+        <div class="modal-footer">
+            <button type="submit" [disabled]="this.bookForm.invalid" class="btn btn-primary" data-bs-dismiss="modal" (click)="closeModal()">{{bookForm.value.id !==0 ? 'Update':'Save'}}</button>
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="closeModal()">Close</button>
+          </div>
+        
+  </form>
+
+       
+  
+      </div>
+    </div>
+  </div>

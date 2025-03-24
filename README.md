@@ -2,6 +2,16 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.3.
 
+The project calls an  asp.net core api.
+
+The end point is specified in the URL. "https://localhost:7282/api/LibraryManagement";
+
+To run the project successfully start the API Library Management project.
+
+The name of the project is called LibraryManagementApi
+
+The project will also be aploaded.
+
 ## Development server
 
 To start a local development server, run:
