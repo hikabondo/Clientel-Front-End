@@ -2,6 +2,15 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.3.
 
+The project calls an  asp.net core api.
+
+The end point is specified in the URL. "https://localhost:7208/api/Products";
+
+To run the project successfully start the Product API project.
+
+The name of the project is called Product Api.
+
+The project will also be aploaded.
 ## Development server
 
 To start a local development server, run:
